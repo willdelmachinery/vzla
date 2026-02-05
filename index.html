@@ -88,12 +88,12 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--secondary-color); /* Cambio color base */
+            color: var(--secondary-color);
             display: none;
         }
         
         .logo-container img { 
-            height: 40px; /* Un poco más grande */
+            height: 40px;
             width: auto;
         }
 
@@ -106,15 +106,7 @@
         }
         
         .logo span {
-            color: var(--primary-color); /* Amarillo */
-        }
-
-        .mobile-logo-nav-item {
-            display: none;
-        }
-        .mobile-logo-img {
-            height: 70px;
-            width: auto;
+            color: var(--primary-color);
         }
 
         .search-container {
@@ -134,7 +126,6 @@
             transition: border-color 0.3s;
         }
 
-        /* Estilo input en modo oscuro */
         .dark-mode .search-container input {
             background-color: #2c2c2c;
             border-color: #444;
@@ -197,14 +188,13 @@
             background-color: var(--card-bg);
             min-width: 200px;
             box-shadow: var(--shadow);
-            border-radius: 8px; /* Más redondeado */
+            border-radius: 8px;
             z-index: 1;
             padding: 10px 0;
             white-space: nowrap;
             border: 1px solid #eee;
         }
         
-        /* Borde dropdown en oscuro */
         .dark-mode .dropdown-content {
             border: 1px solid #333;
         }
@@ -226,6 +216,33 @@
             display: block;
         }
         
+        /* Botón de cambio de región pequeño en el nav */
+        .btn-region {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-region:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+        
+        .btn-region img {
+            width: 18px;
+            height: 12px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
         /* Carrusel Hero */
         .hero {
             position: relative;
@@ -269,11 +286,11 @@
         .carousel-content {
             text-align: center;
             color: white;
-            background-color: rgba(0,0,0,0.6); /* Un poco más claro */
+            background-color: rgba(0,0,0,0.6);
             padding: 2rem;
             border-radius: 10px;
             max-width: 600px;
-            backdrop-filter: blur(2px); /* Efecto moderno */
+            backdrop-filter: blur(2px);
         }
         
         .carousel-content h1 {
@@ -321,7 +338,6 @@
             font-size: 2rem;
         }
 
-        /* Título en modo oscuro */
         .dark-mode .section-title {
             color: var(--primary-color);
         }
@@ -411,7 +427,6 @@
             overflow: hidden;
         }
 
-        /* Descripción en oscuro */
         .dark-mode .product-description {
             color: #aaa;
         }
@@ -434,7 +449,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5); /* Fondo modal claro */
+            background-color: rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
             z-index: 1000;
             overflow-y: auto;
@@ -481,13 +496,13 @@
         .modal-images {
             flex: 1;
             position: relative;
-            background-color: #eee; /* Fondo para imágenes sin transparencia */
+            background-color: #eee;
         }
         
         .main-image {
             width: 100%;
             height: 300px;
-            object-fit: contain; /* Mejor para ver producto completo */
+            object-fit: contain;
             transition: opacity 0.3s;
         }
         
@@ -676,7 +691,7 @@
         }
         
         /* Estilos para la imagen de la bandera dentro del botón */
-        .btn-country img {
+        .btn-country img, .btn-region img {
             width: 30px;
             height: 20px;
             object-fit: cover;
@@ -700,7 +715,7 @@
         }
 
         #login-modal .close-modal {
-            color: #333; /* X oscura en modal blanca */
+            color: #333;
         }
         
         .dark-mode #login-modal .close-modal {
@@ -924,7 +939,7 @@
             padding: 10px 15px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            width: 220px; 
+            width: 220px;
             text-align: center;
             font-size: 0.9rem;
             opacity: 0;
@@ -1083,7 +1098,11 @@
             nav ul {
                 justify-content: center;
                 width: 100%;
-                gap: 1rem;
+                gap: 0.5rem;
+            }
+            
+            nav ul li {
+                margin-left: 0.5rem;
             }
             
             nav ul li a span {
@@ -1093,7 +1112,7 @@
             nav ul li a {
                 flex-direction: column;
                 text-align: center;
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 padding: 5px;
             }
             
@@ -1157,10 +1176,16 @@
             </div>
             <nav>
                 <ul>
+                    <li>
+                        <button class="btn-region" onclick="openCountryModal()" title="Cambiar País">
+                            <img src="https://github.com/willdelmachinery/vzla/blob/main/descarga%20(3).png?raw=true" alt="USA">
+                            <i class="fas fa-exchange-alt" style="font-size: 0.7rem;"></i>
+                            <img src="https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/bandera-venezuela-ondeando-viento_2227-2411.avif" alt="VEN">
+                        </button>
+                    </li>
                     <li><a href="#" id="home-link"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                    <li><a href="#" id="products-link"><i class="fas fa-box"></i> <span>Productos</span></a></li>
                     <li class="dropdown">
-                        <a href="#"><i class="fas fa-user"></i> <span>Mi Cuenta</span> <i class="fas fa-chevron-down"></i></a>
+                        <a href="#"><i class="fas fa-user"></i> <span>Cuenta</span> <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-content">
                             <a href="#" id="login-dropdown-link"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
                             <a href="#" id="add-product-dropdown-link" style="display: none;"><i class="fas fa-plus"></i> Publicar Producto</a>
@@ -1255,7 +1280,7 @@
                         
                         <div id="image-upload-container" class="image-upload-container">
                             </div>
-                        <small style="color: #666; opacity: 0.8;">Para editar: si no selecciona nuevas imágenes, se mantendrán las anteriores. Haga clic en "+" para agregar fotos.</small>
+                        <small style="color: #666; opacity: 0.8;">Haga clic en "+" para agregar fotos.</small>
                     </div>
                     <div class="form-actions">
                         <button type="button" class="btn btn-secondary" id="cancel-btn">Cancelar</button>
@@ -1315,21 +1340,16 @@
             <div class="footer-logo">Will<span>del</span></div>
             <div class="footer-links">
                 <a href="#">Inicio</a>
-                <a href="#">Productos</a>
                 <a href="#">Contacto</a>
                 <a href="#">Términos y Condiciones</a>
             </div>
             <div class="footer-social">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-whatsapp"></i></a>
             </div>
             <div class="copyright">
                 &copy; 2023 Willdel Machinery. Todos los derechos reservados.
-            </div>
-            <div class="copyright">
-                &copy; 2108 Orange Av Fort Pierce Fl 34950.
             </div>
         </div>
     </footer>
@@ -1355,11 +1375,21 @@
             }
         }
 
+        // Función para abrir el modal manualmente desde el botón superior
+        function openCountryModal() {
+            countryModal.style.display = 'block';
+        }
+
         // Mostrar el modal al cargar la página si no se ha seleccionado país
         window.addEventListener('DOMContentLoaded', (event) => {
             if (!localStorage.getItem('countrySelected')) {
-                countryModal.style.display = 'block';
+                openCountryModal();
             }
+        });
+
+        // Cerrar modal al hacer clic fuera de él
+        window.addEventListener('click', (e) => { 
+            if (e.target === countryModal) countryModal.style.display = 'none'; 
         });
 
         // --- Configuración de Firebase ---
@@ -1434,7 +1464,6 @@
 
         // Event Listeners
         document.getElementById('home-link').addEventListener('click', (e) => { e.preventDefault(); showProductsSection(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        document.getElementById('products-link').addEventListener('click', (e) => { e.preventDefault(); showProductsSection(); productsSection.scrollIntoView({ behavior: 'smooth' }); });
         loginDropdownLink.addEventListener('click', (e) => { e.preventDefault(); openLoginModal(); });
         addProductDropdownLink.addEventListener('click', (e) => { e.preventDefault(); openAddProductForm(); });
         logoutDropdownLink.addEventListener('click', (e) => { e.preventDefault(); logout(); });
@@ -1479,8 +1508,7 @@
         // Funciones
         function checkAuthState() {
             loginModalContent.appendChild(loginSection);
-            loginSection.style.display = 'block';
-
+            
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     isLoggedIn = true;
