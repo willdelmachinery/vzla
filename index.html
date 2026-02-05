@@ -426,7 +426,7 @@
             color: var(--primary-color);
         }
         
-        /* Modal General y Modal de Producto */
+        /* --- ESTILOS PARA MODALES --- */
         .modal {
             display: none;
             position: fixed;
@@ -622,6 +622,68 @@
             background-color: #128C7E;
         }
         
+        /* --- ESTILOS DEL MODAL DE PAÍS --- */
+        #country-modal .modal-content {
+            max-width: 500px;
+            margin: 15% auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        #country-modal .modal-title {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .country-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-country {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        
+        .btn-country:hover {
+            transform: scale(1.02);
+            background-color: #f2c200;
+        }
+        
+        .btn-country-ven {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .btn-country-ven:hover {
+            background-color: #555;
+            color: #fff;
+        }
+        
+        /* Estilos para la imagen de la bandera dentro del botón */
+        .btn-country img {
+            width: 30px;
+            height: 20px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
         /* Login Formulario */
         .login-container {
             max-width: 400px;
@@ -1065,6 +1127,24 @@
     </style>
 </head>
 <body class="light-mode">
+    
+    <div id="country-modal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Selecciona tu ubicación</h2>
+            <p style="margin-bottom: 1.5rem; opacity: 0.8;">¿Deseas ingresar a Willdel Venezuela o Willdel Estados Unidos?</p>
+            <div class="country-options">
+                <button class="btn-country btn-country-ven" onclick="selectCountry('ven')">
+                    <img src="https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/bandera-venezuela-ondeando-viento_2227-2411.avif" alt="Bandera Venezuela">
+                    Willdel Venezuela
+                </button>
+                <button class="btn-country" onclick="selectCountry('usa')">
+                    <img src="https://github.com/willdelmachinery/vzla/blob/main/descarga%20(3).png?raw=true" alt="Bandera USA">
+                    Willdel Estados Unidos
+                </button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container header-content">
             <div class="logo-container">
@@ -1255,7 +1335,34 @@
     </footer>
 
     <script>
-        // Configuración de Firebase
+        // --- LOGICA DE SELECCIÓN DE PAÍS ---
+        
+        // URLs proporcionadas por el usuario
+        const URL_VEN = "https://willdelmachinery.github.io/vzla/";
+        const URL_USA = "https://willdelmachines.web.app/";
+        
+        const countryModal = document.getElementById('country-modal');
+
+        function selectCountry(country) {
+            if (country === 'ven') {
+                // Redirigir a Venezuela
+                localStorage.setItem('countrySelected', 'ven');
+                window.location.href = URL_VEN;
+            } else if (country === 'usa') {
+                // Redirigir a USA
+                localStorage.setItem('countrySelected', 'usa');
+                window.location.href = URL_USA;
+            }
+        }
+
+        // Mostrar el modal al cargar la página si no se ha seleccionado país
+        window.addEventListener('DOMContentLoaded', (event) => {
+            if (!localStorage.getItem('countrySelected')) {
+                countryModal.style.display = 'block';
+            }
+        });
+
+        // --- Configuración de Firebase ---
         const firebaseConfig = {
             apiKey: "AIzaSyBI74kUhrNb7Xi63-NlTgVaKvHXbOg_aQY",
             authDomain: "willdelmachines.firebaseapp.com",
