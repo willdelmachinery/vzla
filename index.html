@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Willdel - Maquinaria y Equipos</title>
+    
+    <!-- Importar fuentes modernas de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
@@ -25,6 +31,12 @@
             --accent-color: #FFCD00;
             --shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra más suave */
             --hero-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            
+            /* Nuevas variables para tipografía moderna */
+            --font-heading: 'Montserrat', 'Segoe UI', sans-serif;
+            --font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-logo: 'Poppins', 'Segoe UI', sans-serif;
+            --font-accent: 'Montserrat', sans-serif;
         }
 
         /* --- MODO OSCURO (Mantenido pero actualizado) --- */
@@ -47,7 +59,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-body);
             transition: background-color 0.3s, color 0.3s;
         }
         
@@ -55,6 +67,10 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            font-family: var(--font-body);
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .container {
@@ -87,9 +103,11 @@
         
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--secondary-color);
             display: none;
+            font-family: var(--font-logo);
+            letter-spacing: -0.5px;
         }
         
         .logo-container img { 
@@ -124,6 +142,7 @@
             color: var(--text-color);
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: var(--font-body);
         }
 
         .dark-mode .search-container input {
@@ -156,6 +175,9 @@
             display: flex;
             align-items: center;
             white-space: nowrap;
+            font-family: var(--font-body);
+            font-weight: 600;
+            letter-spacing: -0.2px;
         }
         
         nav ul li a i {
@@ -205,6 +227,8 @@
             text-decoration: none;
             display: block;
             transition: background-color 0.3s;
+            font-family: var(--font-body);
+            font-weight: 500;
         }
         
         .dropdown-content a:hover {
@@ -216,31 +240,58 @@
             display: block;
         }
         
-        /* Botón de cambio de región pequeño en el nav */
+        /* Botón de cambio de región - NUEVO ESTILO MEJORADO */
         .btn-region {
             background-color: transparent;
-            border: 1px solid var(--primary-color);
+            border: 1px solid #ddd;
             color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             transition: all 0.3s;
+            white-space: nowrap;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+        
+        .dark-mode .btn-region {
+            border-color: #444;
         }
         
         .btn-region:hover {
-            background-color: var(--primary-color);
-            color: #000;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 205, 0, 0.05);
+        }
+        
+        .region-flag {
+            display: flex;
+            align-items: center;
         }
         
         .btn-region img {
-            width: 18px;
-            height: 12px;
+            width: 20px;
+            height: 15px;
             object-fit: cover;
             border-radius: 2px;
+        }
+        
+        .region-text {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .region-separator {
+            color: #999;
+            font-weight: 300;
+        }
+        
+        .region-chevron {
+            font-size: 0.8rem;
+            color: #777;
         }
 
         /* Carrusel Hero */
@@ -297,10 +348,17 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--primary-color);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
         .carousel-content p {
             font-size: 1.2rem;
+            font-family: var(--font-body);
+            font-weight: 500;
+            opacity: 0.95;
         }
         
         .carousel-controls {
@@ -335,11 +393,69 @@
             text-align: center;
             margin-bottom: 2rem;
             color: var(--secondary-color);
-            font-size: 2rem;
+            font-size: 2.2rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto;
+            border-radius: 2px;
         }
 
         .dark-mode .section-title {
             color: var(--primary-color);
+        }
+        
+        /* Filtros de categoría */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-filter-btn {
+            background-color: var(--card-bg);
+            border: 2px solid #ddd;
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .category-filter-btn i {
+            font-size: 1.1rem;
+        }
+        
+        .category-filter-btn:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .category-filter-btn.active {
+            background-color: var(--primary-color);
+            color: #000;
+            border-color: var(--primary-color);
+        }
+        
+        .category-filter-btn.active:hover {
+            background-color: #f2c200;
         }
         
         .products-grid {
@@ -415,6 +531,9 @@
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--text-color);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.3;
         }
         
         .product-description {
@@ -425,16 +544,52 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-family: var(--font-body);
+            line-height: 1.5;
         }
 
         .dark-mode .product-description {
             color: #aaa;
         }
         
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            color: #777;
+        }
+        
+        .product-year, .product-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .product-year i, .product-location i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+        
+        .product-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(255, 205, 0, 0.9);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 10;
+            font-family: var(--font-body);
+        }
+        
         .product-price {
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--secondary-color);
+            font-family: var(--font-heading);
         }
 
         .dark-mode .product-price {
@@ -480,6 +635,8 @@
             cursor: pointer;
             z-index: 1001;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-family: var(--font-heading);
+            font-weight: 300;
         }
         
         .modal-product {
@@ -576,21 +733,60 @@
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: var(--secondary-color);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .dark-mode .modal-title {
             color: var(--primary-color);
         }
         
+        .modal-category {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+            font-family: var(--font-body);
+        }
+        
+        .modal-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .modal-meta-item i {
+            color: var(--primary-color);
+        }
+        
+        .dark-mode .modal-meta-item {
+            color: #aaa;
+        }
+        
         .modal-price {
             font-size: 1.6rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 1rem;
             padding: 10px;
             background-color: rgba(255, 205, 0, 0.1);
             border-radius: 8px;
             display: inline-block;
+            font-family: var(--font-heading);
         }
         
         .modal-description {
@@ -598,6 +794,8 @@
             line-height: 1.7;
             margin-bottom: 1.5rem;
             flex-grow: 1;
+            font-family: var(--font-body);
+            font-size: 1rem;
         }
 
         .dark-mode .modal-description {
@@ -626,100 +824,196 @@
             flex-grow: 1;
             width: 100%;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1.1rem;
             padding: 1rem;
             text-decoration: none;
             transition: background-color 0.3s;
+            font-family: var(--font-body);
         }
 
         .btn-whatsapp-modal:hover {
             background-color: #128C7E;
         }
         
-        /* --- ESTILOS DEL MODAL DE PAÍS --- */
+        /* --- ESTILOS DEL MODAL DE PAÍS - ACTUALIZADO --- */
         #country-modal .modal-content {
             max-width: 500px;
             margin: 15% auto;
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
+            position: relative;
+        }
+        
+        #country-modal .close-modal {
+            color: var(--text-color);
+        }
+        
+        .dark-mode #country-modal .close-modal {
+            color: #fff;
         }
         
         #country-modal .modal-title {
             color: var(--secondary-color);
             margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+        
+        #country-modal p {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            line-height: 1.5;
         }
         
         .country-options {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
             margin-top: 1.5rem;
         }
         
         .btn-country {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
+            justify-content: space-between;
             width: 100%;
-            padding: 1rem;
-            background-color: var(--primary-color);
-            color: #000;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            padding: 1.2rem 1.5rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
-            transition: transform 0.2s, background-color 0.3s;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        
+        .dark-mode .btn-country {
+            border-color: #444;
+            background-color: #1e1e1e;
         }
         
         .btn-country:hover {
-            transform: scale(1.02);
-            background-color: #f2c200;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
         }
         
-        .btn-country-ven {
-            background-color: #333;
-            color: #fff;
+        .dark-mode .btn-country:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
-        .btn-country-ven:hover {
-            background-color: #555;
-            color: #fff;
+        .country-flag-container {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
         }
         
-        /* Estilos para la imagen de la bandera dentro del botón */
-        .btn-country img, .btn-region img {
-            width: 30px;
-            height: 20px;
+        .btn-country img {
+            width: 40px;
+            height: 25px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-
-        /* Login Formulario */
-        .login-container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: var(--card-bg);
-            border-radius: 10px;
+        
+        .country-info {
+            flex-grow: 1;
+            text-align: left;
         }
         
+        .country-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: var(--secondary-color);
+            font-family: var(--font-heading);
+        }
+        
+        .dark-mode .country-name {
+            color: #fff;
+        }
+        
+        .country-description {
+            font-size: 0.85rem;
+            color: #777;
+            opacity: 0.9;
+            font-family: var(--font-body);
+        }
+        
+        .dark-mode .country-description {
+            color: #aaa;
+        }
+        
+        .country-arrow {
+            color: #777;
+            font-size: 1rem;
+            margin-left: 10px;
+        }
+        
+        .btn-country:hover .country-arrow {
+            color: var(--primary-color);
+            transform: translateX(3px);
+        }
+        
+        .btn-country-usa:hover {
+            background-color: rgba(255, 205, 0, 0.05);
+        }
+        
+        .btn-country-ven {
+            background-color: #f8f9fa;
+        }
+        
+        .dark-mode .btn-country-ven {
+            background-color: #2a2a2a;
+        }
+        
+        .btn-country-ven:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+
+        /* --- ESTILOS PARA MODAL DE LOGIN CORREGIDOS --- */
         #login-modal .modal-content {
             max-width: 450px;
             margin: 10% auto;
-            padding: 10px;
+            padding: 2.5rem;
+            position: relative;
         }
 
         #login-modal .close-modal {
-            color: #333;
+            color: var(--text-color);
+            z-index: 1002;
         }
         
         .dark-mode #login-modal .close-modal {
             color: #fff;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: transparent;
+            border-radius: 0;
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .dark-mode .login-container h2 {
+            color: var(--primary-color);
         }
 
         .form-group {
@@ -729,15 +1023,16 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--secondary-color);
+            font-family: var(--font-body);
         }
         
         .dark-mode .form-group label {
             color: var(--text-color);
         }
         
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #ddd;
@@ -745,12 +1040,22 @@
             font-size: 1rem;
             background-color: #fff;
             color: #333;
+            font-family: var(--font-body);
         }
         
-        .dark-mode .form-group input, .dark-mode .form-group textarea {
+        .dark-mode .form-group input, .dark-mode .form-group textarea, .dark-mode .form-group select {
             background-color: #2c2c2c;
             border: 1px solid #555;
             color: #e0e0e0;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
         }
         
         .btn {
@@ -764,9 +1069,11 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s;
-            font-weight: bold;
+            font-weight: 600;
             text-align: center;
             text-decoration: none;
+            font-family: var(--font-body);
+            letter-spacing: -0.2px;
         }
         
         .btn:hover {
@@ -789,6 +1096,9 @@
             text-align: center;
             margin-bottom: 1.5rem;
             color: var(--secondary-color);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.8rem;
         }
 
         .dark-mode .product-form-container h2 {
@@ -891,6 +1201,7 @@
             border-radius: 6px;
             text-align: center;
             font-weight: 500;
+            font-family: var(--font-body);
         }
         
         .error {
@@ -899,10 +1210,22 @@
             border: 1px solid #f5c6cb;
         }
         
+        .dark-mode .error {
+            background-color: #4a1a1f;
+            color: #f8d7da;
+            border: 1px solid #5c2329;
+        }
+        
         .success {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
+        }
+        
+        .dark-mode .success {
+            background-color: #1a3c23;
+            color: #d4edda;
+            border: 1px solid #2a4d30;
         }
         
         /* Botón flotante de WhatsApp */
@@ -946,6 +1269,7 @@
             visibility: hidden;
             transition: opacity 0.3s;
             border: 1px solid #eee;
+            font-family: var(--font-body);
         }
 
         .dark-mode .whatsapp-tooltip {
@@ -1021,9 +1345,11 @@
         
         .footer-logo {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: #fff;
+            font-family: var(--font-logo);
+            letter-spacing: -0.5px;
         }
         
         .footer-logo span {
@@ -1042,6 +1368,8 @@
             color: #bbb;
             text-decoration: none;
             transition: color 0.3s;
+            font-family: var(--font-body);
+            font-weight: 500;
         }
         
         .footer-links a:hover {
@@ -1068,6 +1396,7 @@
             font-size: 0.9rem;
             color: #888;
             margin-top: 0.5rem;
+            font-family: var(--font-body);
         }
         
         /* Responsive */
@@ -1142,6 +1471,44 @@
                 height: 55px;
                 font-size: 1.6rem;
             }
+            
+            .btn-region {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .btn-region img {
+                width: 18px;
+                height: 12px;
+            }
+            
+            .region-text {
+                display: none;
+            }
+            
+            .region-separator {
+                display: none;
+            }
+            
+            #login-modal .modal-content,
+            #country-modal .modal-content {
+                padding: 1.5rem;
+                margin: 20% auto;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .category-filters {
+                gap: 0.5rem;
+            }
+            
+            .category-filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -1149,16 +1516,30 @@
     
     <div id="country-modal" class="modal">
         <div class="modal-content">
+            <span class="close-modal close-country-modal">&times;</span>
             <h2 class="modal-title">Selecciona tu ubicación</h2>
             <p style="margin-bottom: 1.5rem; opacity: 0.8;">¿Deseas ingresar a Willdel Venezuela o Willdel Estados Unidos?</p>
             <div class="country-options">
-                <button class="btn-country btn-country-ven" onclick="selectCountry('ven')">
-                    <img src="https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/bandera-venezuela-ondeando-viento_2227-2411.avif" alt="Bandera Venezuela">
-                    Willdel Venezuela
+                <button class="btn-country btn-country-usa" onclick="selectCountry('usa')">
+                    <div class="country-flag-container">
+                        <img src="https://github.com/willdelmachinery/vzla/blob/main/descarga%20(3).png?raw=true" alt="Bandera USA">
+                    </div>
+                    <div class="country-info">
+                        <div class="country-name">Willdel Estados Unidos</div>
+                        <div class="country-description">Sitio oficial para clientes en EE.UU.</div>
+                    </div>
+                    <i class="fas fa-arrow-right country-arrow"></i>
                 </button>
-                <button class="btn-country" onclick="selectCountry('usa')">
-                    <img src="https://github.com/willdelmachinery/vzla/blob/main/descarga%20(3).png?raw=true" alt="Bandera USA">
-                    Willdel Estados Unidos
+                
+                <button class="btn-country btn-country-ven" onclick="selectCountry('ven')">
+                    <div class="country-flag-container">
+                        <img src="https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/bandera-venezuela-ondeando-viento_2227-2411.avif" alt="Bandera Venezuela">
+                    </div>
+                    <div class="country-info">
+                        <div class="country-name">Willdel Venezuela</div>
+                        <div class="country-description">Sitio oficial para clientes en Venezuela</div>
+                    </div>
+                    <i class="fas fa-arrow-right country-arrow"></i>
                 </button>
             </div>
         </div>
@@ -1167,7 +1548,7 @@
     <header>
         <div class="container header-content">
             <div class="logo-container">
-                <img src="https://github.com/willdelmachinery/vzla/blob/main/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(1).jpg?raw=true" alt="Logo Willdel" class="logo-image">
+                <img src="https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/bandera-venezuela-ondeando-viento_2227-2411.avif" alt="Logo Willdel" class="logo-image">
                 <div class="logo">Will<span>del</span></div>
             </div>
             
@@ -1178,9 +1559,16 @@
                 <ul>
                     <li>
                         <button class="btn-region" onclick="openCountryModal()" title="Cambiar País">
-                            <img src="https://github.com/willdelmachinery/vzla/blob/main/descarga%20(3).png?raw=true" alt="USA">
-                            <i class="fas fa-exchange-alt" style="font-size: 0.7rem;"></i>
-                            <img src="https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/bandera-venezuela-ondeando-viento_2227-2411.avif" alt="VEN">
+                            <span class="region-flag">
+                                <img src="https://github.com/willdelmachinery/vzla/blob/main/descarga%20(3).png?raw=true" alt="USA">
+                            </span>
+                            <span class="region-text">USA</span>
+                            <span class="region-separator">/</span>
+                            <span class="region-flag">
+                                <img src="https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/bandera-venezuela-ondeando-viento_2227-2411.avif" alt="VEN">
+                            </span>
+                            <span class="region-text">VEN</span>
+                            <i class="fas fa-chevron-down region-chevron"></i>
                         </button>
                     </li>
                     <li><a href="#" id="home-link"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
@@ -1207,19 +1595,19 @@
             <div class="carousel-inner">
                 <div class="carousel-item active" style="background-image: url('https://raw.githubusercontent.com/willdelmachinery/vzla/refs/heads/main/16885675.jfif');">
                     <div class="carousel-content">
-                        <h1>Willdel Machinery</h1>
+                        <h1>WILLDEL MACHINERY</h1>
                         <p>Maquinaria y equipos de alta calidad para tus proyectos</p>
                     </div>
                 </div>
                 <div class="carousel-item" style="background-image: url('https://github.com/willdelmachinery/vzla/blob/main/Used-Car-Dealers-Dealership-Keys.jpg?raw=true');">
                     <div class="carousel-content">
-                        <h1>Vehículos Nuevos y Usados</h1>
+                        <h1>VEHÍCULOS NUEVOS Y USADOS</h1>
                         <p>Somos importadores directos</p>
                     </div>
                 </div>
                 <div class="carousel-item" style="background-image: url('https://raw.githubusercontent.com/willdelmachinery/1/refs/heads/main/CM20200529-04f58-b9a52.jfif');">
                     <div class="carousel-content">
-                        <h1>Servicio Técnico</h1>
+                        <h1>SERVICIO TÉCNICO</h1>
                         <p>Mano de obra especializada para tu maquinaria</p>
                     </div>
                 </div>
@@ -1235,24 +1623,26 @@
     <main class="container">
         <section id="products-section" class="products-section">
             <h2 class="section-title">Nuestros Productos</h2>
+            
+            <!-- Filtros de categoría -->
+            <div class="category-filters">
+                <button class="category-filter-btn active" data-category="todos">
+                    <i class="fas fa-th"></i> Todos
+                </button>
+                <button class="category-filter-btn" data-category="autos">
+                    <i class="fas fa-car"></i> Autos
+                </button>
+                <button class="category-filter-btn" data-category="maquinaria">
+                    <i class="fas fa-tractor"></i> Maquinaria
+                </button>
+                <button class="category-filter-btn" data-category="partes">
+                    <i class="fas fa-cogs"></i> Partes y Piezas
+                </button>
+            </div>
+            
             <div id="products-grid" class="products-grid">
-                </div>
-        </section>
-
-        <section id="login-section" class="login-container" style="display: none;">
-            <h2>Iniciar Sesión</h2>
-            <div id="login-message"></div>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="username">Usuario</label>
-                    <input type="text" id="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" required>
-                </div>
-                <button type="submit" class="btn">Ingresar</button>
-            </form>
+                <!-- Los productos se cargarán aquí -->
+            </div>
         </section>
 
         <section id="product-management-section" style="display: none;">
@@ -1269,9 +1659,32 @@
                         <label for="product-description">Descripción</label>
                         <textarea id="product-description" rows="4" required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="product-price">Precio</label>
-                        <input type="number" id="product-price" step="0.01" min="0" required>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-year">Año</label>
+                            <input type="number" id="product-year" min="1900" max="2099" step="1" placeholder="Ej: 2023">
+                        </div>
+                        <div class="form-group">
+                            <label for="product-price">Precio</label>
+                            <input type="number" id="product-price" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-location">Ubicación</label>
+                            <input type="text" id="product-location" placeholder="Ej: Caracas, Venezuela o Miami, USA">
+                        </div>
+                        <div class="form-group">
+                            <label for="product-category">Categoría</label>
+                            <select id="product-category" required>
+                                <option value="">Seleccionar categoría</option>
+                                <option value="autos">Autos</option>
+                                <option value="maquinaria">Maquinaria</option>
+                                <option value="partes">Partes y Piezas</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-group">
@@ -1279,7 +1692,8 @@
                         <input type="file" id="product-images-input-hidden" accept="image/*" style="display: none;">
                         
                         <div id="image-upload-container" class="image-upload-container">
-                            </div>
+                            <!-- Vista previa de imágenes -->
+                        </div>
                         <small style="color: #666; opacity: 0.8;">Haga clic en "+" para agregar fotos.</small>
                     </div>
                     <div class="form-actions">
@@ -1291,11 +1705,29 @@
         </section>
     </main>
 
+    <!-- Modal de Login -->
     <div id="login-modal" class="modal">
-        <span class="close-modal close-login-modal">&times;</span>
-        <div class="modal-content" id="login-modal-content">
+        <div class="modal-content">
+            <span class="close-modal close-login-modal">&times;</span>
+            <div class="login-container">
+                <h2>Iniciar Sesión</h2>
+                <div id="login-message"></div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Correo Electrónico</label>
+                        <input type="email" id="username" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" required placeholder="Tu contraseña">
+                    </div>
+                    <button type="submit" class="btn">Ingresar</button>
+                </form>
             </div>
+        </div>
     </div>
+
+    <!-- Modal de Producto -->
     <div id="product-modal" class="modal">
         <span class="close-modal close-product-modal">&times;</span>
         <div class="modal-content">
@@ -1308,10 +1740,23 @@
                     <button class="carousel-nav next-modal-img" id="next-modal-img"><i class="fas fa-chevron-right"></i></button>
 
                     <div id="modal-thumbnails" class="thumbnail-images">
-                        </div>
+                        <!-- Miniaturas de imágenes -->
+                    </div>
                 </div>
                 <div class="modal-details">
                     <h2 id="modal-title" class="modal-title"></h2>
+                    
+                    <div class="modal-category" id="modal-category"></div>
+                    
+                    <div class="modal-meta">
+                        <div class="modal-meta-item" id="modal-year">
+                            <i class="fas fa-calendar-alt"></i> <span></span>
+                        </div>
+                        <div class="modal-meta-item" id="modal-location">
+                            <i class="fas fa-map-marker-alt"></i> <span></span>
+                        </div>
+                    </div>
+                    
                     <div id="modal-price" class="modal-price"></div>
                     <p id="modal-description" class="modal-description"></p>
                     
@@ -1324,6 +1769,7 @@
             </div>
         </div>
     </div>
+
     <a href="https://wa.me/17863570508?text=Hola,%20me%20interesa%20uno%20de%20sus%20productos%20de%20Willdel" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
         <div class="whatsapp-tooltip">
@@ -1362,6 +1808,7 @@
         const URL_USA = "https://willdelmachines.web.app/";
         
         const countryModal = document.getElementById('country-modal');
+        const closeCountryModal = document.querySelector('.close-country-modal');
 
         function selectCountry(country) {
             if (country === 'ven') {
@@ -1380,16 +1827,24 @@
             countryModal.style.display = 'block';
         }
 
+        // Cerrar modal de país
+        function closeCountryModalFunc() {
+            countryModal.style.display = 'none';
+        }
+
         // Mostrar el modal al cargar la página si no se ha seleccionado país
         window.addEventListener('DOMContentLoaded', (event) => {
             if (!localStorage.getItem('countrySelected')) {
                 openCountryModal();
             }
+            
+            // Agregar listener para cerrar modal de país
+            closeCountryModal.addEventListener('click', closeCountryModalFunc);
         });
 
         // Cerrar modal al hacer clic fuera de él
         window.addEventListener('click', (e) => { 
-            if (e.target === countryModal) countryModal.style.display = 'none'; 
+            if (e.target === countryModal) closeCountryModalFunc(); 
         });
 
         // --- Configuración de Firebase ---
@@ -1427,13 +1882,16 @@
         const prevModalBtn = document.getElementById('prev-modal-img');
         const nextModalBtn = document.getElementById('next-modal-img');
 
-        const loginSection = document.getElementById('login-section');
+        // Referencias a elementos del DOM
+        const loginModal = document.getElementById('login-modal');
+        const closeModalLogin = document.querySelector('.close-login-modal');
+        const loginForm = document.getElementById('login-form');
+        const loginMessage = document.getElementById('login-message');
+        
         const productsSection = document.getElementById('products-section');
         const productManagementSection = document.getElementById('product-management-section');
-        const loginForm = document.getElementById('login-form');
         const productForm = document.getElementById('product-form');
         const productsGrid = document.getElementById('products-grid');
-        const loginMessage = document.getElementById('login-message');
         const productMessage = document.getElementById('product-message');
         
         const productModal = document.getElementById('product-modal');
@@ -1441,14 +1899,13 @@
         const modalMainImage = document.getElementById('modal-main-image');
         const modalThumbnails = document.getElementById('modal-thumbnails');
         const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalYear = document.getElementById('modal-year').querySelector('span');
+        const modalLocation = document.getElementById('modal-location').querySelector('span');
         const modalPrice = document.getElementById('modal-price');
         const modalDescription = document.getElementById('modal-description');
         const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
         
-        const loginModal = document.getElementById('login-modal');
-        const closeModalLogin = document.querySelector('.close-login-modal');
-        const loginModalContent = document.getElementById('login-modal-content');
-
         const loginDropdownLink = document.getElementById('login-dropdown-link');
         const addProductDropdownLink = document.getElementById('add-product-dropdown-link');
         const logoutDropdownLink = document.getElementById('logout-dropdown-link');
@@ -1460,24 +1917,72 @@
         const productIdInput = document.getElementById('product-id');
         
         const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-        const searchBar = document.getElementById('search-bar'); 
+        const searchBar = document.getElementById('search-bar');
+        const homeLink = document.getElementById('home-link');
+        const cancelBtn = document.getElementById('cancel-btn');
+        
+        // Filtros de categoría
+        const categoryFilterButtons = document.querySelectorAll('.category-filter-btn');
+        let selectedCategory = 'todos';
+
+        // --- FUNCIÓN PARA FORMATEAR PRECIOS CON SEPARADORES ---
+        function formatPrice(price) {
+            // Formato latinoamericano: 20.000,00
+            return new Intl.NumberFormat('es-VE', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(price);
+        }
+        
+        // --- FUNCIÓN PARA OBTENER NOMBRE DE CATEGORÍA ---
+        function getCategoryName(category) {
+            const categories = {
+                'autos': 'Autos',
+                'maquinaria': 'Maquinaria',
+                'partes': 'Partes y Piezas'
+            };
+            return categories[category] || category;
+        }
 
         // Event Listeners
-        document.getElementById('home-link').addEventListener('click', (e) => { e.preventDefault(); showProductsSection(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        loginDropdownLink.addEventListener('click', (e) => { e.preventDefault(); openLoginModal(); });
-        addProductDropdownLink.addEventListener('click', (e) => { e.preventDefault(); openAddProductForm(); });
-        logoutDropdownLink.addEventListener('click', (e) => { e.preventDefault(); logout(); });
-        document.getElementById('cancel-btn').addEventListener('click', () => { showProductsSection(); });
+        homeLink.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            showProductsSection(); 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        });
+        
+        loginDropdownLink.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            openLoginModal(); 
+        });
+        
+        addProductDropdownLink.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            openAddProductForm(); 
+        });
+        
+        logoutDropdownLink.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            logout(); 
+        });
+        
+        cancelBtn.addEventListener('click', () => { 
+            showProductsSection(); 
+        });
 
         loginForm.addEventListener('submit', handleLogin);
         productForm.addEventListener('submit', handleProductSubmission);
         productImagesInputHidden.addEventListener('change', handleImageUploadChange);
 
-        closeModalProduct.addEventListener('click', closeProductModal);
-        window.addEventListener('click', (e) => { if (e.target === productModal) closeProductModal(); });
-
         closeModalLogin.addEventListener('click', closeLoginModal);
-        window.addEventListener('click', (e) => { if (e.target === loginModal) closeLoginModal(); });
+        window.addEventListener('click', (e) => { 
+            if (e.target === loginModal) closeLoginModal(); 
+        });
+
+        closeModalProduct.addEventListener('click', closeProductModal);
+        window.addEventListener('click', (e) => { 
+            if (e.target === productModal) closeProductModal(); 
+        });
 
         prevModalBtn.addEventListener('click', () => { navigateModalImage(-1); });
         nextModalBtn.addEventListener('click', () => { navigateModalImage(1); });
@@ -1504,11 +2009,17 @@
         });
         
         searchBar.addEventListener('input', filterProducts);
+        
+        // Event listeners para filtros de categoría
+        categoryFilterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                selectCategory(category);
+            });
+        });
 
-        // Funciones
+        // Funciones principales
         function checkAuthState() {
-            loginModalContent.appendChild(loginSection);
-            
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     isLoggedIn = true;
@@ -1520,6 +2031,7 @@
                     updateNavigation();
                 }
                 
+                // Configurar tema
                 if (localStorage.getItem('theme') === 'dark') {
                     document.body.classList.add('dark-mode');
                     document.body.classList.remove('light-mode');
@@ -1530,11 +2042,249 @@
                     themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 }
                 
+                // Cargar productos
                 loadProducts();
                 showProductsSection();
             });
         }
         
+        function openLoginModal() {
+            loginModal.style.display = 'block';
+            loginForm.reset();
+            loginMessage.innerHTML = '';
+        }
+
+        function closeLoginModal() {
+            loginModal.style.display = 'none';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    isLoggedIn = true;
+                    updateNavigation();
+                    showMessage(loginMessage, 'Inicio de sesión exitoso', 'success');
+                    setTimeout(() => {
+                        closeLoginModal();
+                    }, 1500);
+                })
+                .catch((error) => { 
+                    showMessage(loginMessage, 'Error: ' + error.message, 'error'); 
+                });
+        }
+
+        function logout() {
+            auth.signOut().then(() => { 
+                isLoggedIn = false; 
+                updateNavigation(); 
+                showProductsSection();
+                showMessage(loginMessage, 'Sesión cerrada correctamente', 'success');
+            });
+        }
+
+        function updateNavigation() {
+            if (isLoggedIn) {
+                loginDropdownLink.style.display = 'none';
+                addProductDropdownLink.style.display = 'block';
+                logoutDropdownLink.style.display = 'block';
+            } else {
+                loginDropdownLink.style.display = 'block';
+                addProductDropdownLink.style.display = 'none';
+                logoutDropdownLink.style.display = 'none';
+            }
+        }
+
+        function loadProducts() {
+            const productsRef = database.ref('products');
+            productsRef.on('value', (snapshot) => {
+                products = [];
+                const data = snapshot.val();
+                if (data) {
+                    Object.keys(data).forEach(key => { 
+                        products.push({ 
+                            id: key, 
+                            title: data[key].title || '',
+                            description: data[key].description || '',
+                            price: data[key].price || 0,
+                            year: data[key].year || '',
+                            location: data[key].location || '',
+                            category: data[key].category || 'maquinaria', // Valor por defecto
+                            images: data[key].images || [],
+                            date: data[key].date || new Date().toISOString()
+                        }); 
+                    });
+                }
+                renderProducts();
+            });
+        }
+
+        function selectCategory(category) {
+            selectedCategory = category;
+            
+            // Actualizar botones activos
+            categoryFilterButtons.forEach(button => {
+                if (button.getAttribute('data-category') === category) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+            
+            // Filtrar productos
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const searchTerm = searchBar.value.toLowerCase().trim();
+            
+            let filtered = products;
+            
+            // Filtrar por categoría primero
+            if (selectedCategory !== 'todos') {
+                filtered = filtered.filter(product => product.category === selectedCategory);
+            }
+            
+            // Luego filtrar por término de búsqueda si hay
+            if (searchTerm !== '') {
+                filtered = filtered.filter(product => {
+                    return product.title.toLowerCase().includes(searchTerm) || 
+                           product.description.toLowerCase().includes(searchTerm) ||
+                           (product.year && product.year.toString().includes(searchTerm)) ||
+                           (product.location && product.location.toLowerCase().includes(searchTerm));
+                });
+            }
+            
+            renderProducts(filtered);
+        }
+
+        function renderProducts(filteredProducts = products) {
+            productsGrid.innerHTML = '';
+            const displayProducts = [...filteredProducts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            if (displayProducts.length === 0) { 
+                let message = 'No se encontraron productos.';
+                if (selectedCategory !== 'todos' && searchBar.value.trim() !== '') {
+                    message = `No se encontraron productos en la categoría "${getCategoryName(selectedCategory)}" que coincidan con tu búsqueda.`;
+                } else if (selectedCategory !== 'todos') {
+                    message = `No se encontraron productos en la categoría "${getCategoryName(selectedCategory)}".`;
+                } else if (searchBar.value.trim() !== '') {
+                    message = 'No se encontraron productos que coincidan con tu búsqueda.';
+                }
+                
+                productsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-color); opacity: 0.7; font-family: var(--font-body); padding: 2rem;">${message}</p>`; 
+                return; 
+            }
+            
+            displayProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.images[0] || 'https://via.placeholder.com/300x200?text=Sin+Imagen'}" alt="${product.title}" class="product-image">
+                    
+                    <div class="product-category">${getCategoryName(product.category)}</div>
+                    
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-description">${product.description}</p>
+                        
+                        ${(product.year || product.location) ? `
+                            <div class="product-meta">
+                                ${product.year ? `
+                                    <div class="product-year">
+                                        <i class="fas fa-calendar-alt"></i> ${product.year}
+                                    </div>
+                                ` : ''}
+                                ${product.location ? `
+                                    <div class="product-location">
+                                        <i class="fas fa-map-marker-alt"></i> ${product.location}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        ` : ''}
+                        
+                        <div class="product-price">$${formatPrice(product.price)}</div>
+                    </div>
+                    ${isLoggedIn ? `
+                        <div class="admin-controls">
+                            <button class="btn-edit" data-id="${product.id}" title="Editar"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" data-id="${product.id}" title="Eliminar"><i class="fas fa-trash"></i></button>
+                        </div>
+                    ` : ''}
+                `;
+                productCard.addEventListener('click', (event) => { 
+                    if (!event.target.closest('.admin-controls')) openProductModal(product); 
+                });
+                productsGrid.appendChild(productCard);
+            });
+            
+            if (isLoggedIn) {
+                document.querySelectorAll('.btn-edit').forEach(btn => {
+                    btn.addEventListener('click', (e) => { 
+                        e.stopPropagation(); 
+                        openEditProductForm(products.find(p => p.id === btn.getAttribute('data-id'))); 
+                    });
+                });
+                document.querySelectorAll('.btn-delete').forEach(btn => {
+                    btn.addEventListener('click', (e) => { 
+                        e.stopPropagation(); 
+                        handleDeleteProduct(btn.getAttribute('data-id')); 
+                    });
+                });
+            }
+        }
+
+        function showProductsSection() {
+            loginModal.style.display = 'none';
+            productModal.style.display = 'none';
+            productsSection.style.display = 'block';
+            productManagementSection.style.display = 'none';
+            searchBar.value = '';
+        }
+
+        function openAddProductForm() {
+            if (isLoggedIn) {
+                productForm.reset();
+                productIdInput.value = '';
+                productManagementTitle.textContent = 'Agregar Nuevo Producto';
+                submitProductBtn.textContent = 'Publicar Producto';
+                tempProductImages = [];
+                originalProductImages = [];
+                renderImageUploadPreview();
+                productManagementSection.style.display = 'block';
+                productsSection.style.display = 'none';
+                productManagementSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                openLoginModal();
+            }
+        }
+
+        function openEditProductForm(product) {
+            if (isLoggedIn) {
+                productManagementTitle.textContent = 'Editar Producto';
+                submitProductBtn.textContent = 'Guardar Cambios';
+                productIdInput.value = product.id;
+                document.getElementById('product-title').value = product.title;
+                document.getElementById('product-description').value = product.description;
+                document.getElementById('product-price').value = product.price;
+                document.getElementById('product-year').value = product.year || '';
+                document.getElementById('product-location').value = product.location || '';
+                document.getElementById('product-category').value = product.category || 'maquinaria';
+                originalProductImages = [...product.images];
+                tempProductImages = [...product.images];
+                renderImageUploadPreview();
+                productManagementSection.style.display = 'block';
+                productsSection.style.display = 'none';
+                productManagementSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                openLoginModal();
+            }
+        }
+
+        // Funciones para manejo de imágenes
         function readFileAsDataURL(file) {
             return new Promise((resolve) => {
                 const reader = new FileReader();
@@ -1582,11 +2332,182 @@
             imageUploadContainer.appendChild(addBtn);
         }
 
+        function handleProductSubmission(e) {
+            e.preventDefault();
+            const id = productIdInput.value;
+            const title = document.getElementById('product-title').value;
+            const description = document.getElementById('product-description').value;
+            const price = parseFloat(document.getElementById('product-price').value);
+            const year = document.getElementById('product-year').value;
+            const location = document.getElementById('product-location').value;
+            const category = document.getElementById('product-category').value;
+            
+            const existingImageUrls = tempProductImages.filter(url => url.startsWith('http'));
+            const newDataUrls = tempProductImages.filter(url => url.startsWith('data:'));
+            
+            if (existingImageUrls.length + newDataUrls.length === 0) { 
+                showMessage(productMessage, 'Debe seleccionar al menos una imagen', 'error'); 
+                return; 
+            }
+            
+            // Subir nuevas imágenes a Firebase Storage
+            const uploadPromises = [];
+            for (let i = 0; i < newDataUrls.length; i++) {
+                const dataUrl = newDataUrls[i];
+                const storageRef = storage.ref('products/' + Date.now() + '_' + i + '.jpg');
+                uploadPromises.push((async () => {
+                    const response = await fetch(dataUrl);
+                    const fileBlob = await response.blob();
+                    const snapshot = await storageRef.put(fileBlob);
+                    return snapshot.ref.getDownloadURL();
+                })());
+            }
+            
+            Promise.all(uploadPromises)
+                .then(newlyUploadedUrls => {
+                    let finalImageUrls = existingImageUrls.concat(newlyUploadedUrls);
+                    let deleteOldImagesPromises = [];
+                    
+                    // Si estamos editando, eliminar imágenes antiguas que ya no se usan
+                    if (id) {
+                        const imagesToKeep = new Set(existingImageUrls);
+                        const imagesToDelete = originalProductImages.filter(url => url.startsWith('http') && !imagesToKeep.has(url));
+                        imagesToDelete.forEach(url => {
+                            try { 
+                                const storageRef = storage.refFromURL(url); 
+                                deleteOldImagesPromises.push(storageRef.delete()); 
+                            } catch (e) { 
+                                deleteOldImagesPromises.push(Promise.resolve()); 
+                            }
+                        });
+                        originalProductImages = [];
+                    }
+                    
+                    return Promise.all(deleteOldImagesPromises).then(() => finalImageUrls);
+                })
+                .then(finalImageUrls => {
+                    const newProduct = { 
+                        title, 
+                        description, 
+                        price, 
+                        year: year || null,
+                        location: location || null,
+                        category: category || 'maquinaria',
+                        images: finalImageUrls, 
+                        date: new Date().toISOString() 
+                    };
+                    
+                    if (id) { 
+                        return database.ref('products/' + id).update(newProduct); 
+                    } else { 
+                        return database.ref('products').push(newProduct); 
+                    }
+                })
+                .then(() => { 
+                    saveProductsAndShowSuccess('Producto guardado exitosamente'); 
+                })
+                .catch((error) => { 
+                    showMessage(productMessage, 'Error: ' + error.message, 'error'); 
+                });
+        }
+
+        function saveProductsAndShowSuccess(message) {
+            showMessage(productMessage, message, 'success');
+            productForm.reset();
+            tempProductImages = [];
+            renderImageUploadPreview();
+            setTimeout(() => { 
+                showProductsSection(); 
+            }, 1500);
+        }
+
+        function handleDeleteProduct(id) {
+            if (confirm('¿Está seguro que desea eliminar este producto?')) {
+                const productRef = database.ref('products/' + id);
+                productRef.once('value')
+                    .then(snapshot => {
+                        const product = snapshot.val();
+                        if (!product || !product.images || product.images.length === 0) return productRef.remove();
+                        
+                        const deletePromises = [];
+                        product.images.forEach(url => {
+                            try { 
+                                deletePromises.push(storage.refFromURL(url).delete()); 
+                            } catch (e) { 
+                                deletePromises.push(Promise.resolve()); 
+                            }
+                        });
+                        return Promise.all(deletePromises).then(() => productRef.remove());
+                    })
+                    .then(() => { 
+                        showMessage(productMessage, 'Producto eliminado', 'success'); 
+                    })
+                    .catch((error) => { 
+                        showMessage(productMessage, 'Error: ' + error.message, 'error'); 
+                    });
+            }
+        }
+
+        // Funciones para el modal de producto
+        function openProductModal(product) {
+            modalCurrentProduct = product;
+            modalCurrentIndex = 0;
+            modalTitle.textContent = product.title;
+            modalPrice.textContent = `$${formatPrice(product.price)}`;
+            modalDescription.textContent = product.description;
+            modalCategory.textContent = getCategoryName(product.category);
+            
+            // Mostrar año si existe
+            if (product.year) {
+                modalYear.textContent = product.year;
+                document.getElementById('modal-year').style.display = 'flex';
+            } else {
+                document.getElementById('modal-year').style.display = 'none';
+            }
+            
+            // Mostrar ubicación si existe
+            if (product.location) {
+                modalLocation.textContent = product.location;
+                document.getElementById('modal-location').style.display = 'flex';
+            } else {
+                document.getElementById('modal-location').style.display = 'none';
+            }
+            
+            const whatsappMessage = encodeURIComponent(`Quisiera saber más sobre este producto: ${product.title}${product.year ? ` (Año: ${product.year})` : ''}${product.location ? ` - Ubicación: ${product.location}` : ''} - Categoría: ${getCategoryName(product.category)}`);
+            modalWhatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+            modalThumbnails.innerHTML = '';
+            
+            const showNav = product.images.length > 1 ? 'block' : 'none';
+            prevModalBtn.style.display = showNav;
+            nextModalBtn.style.display = showNav;
+            
+            if (product.images.length > 0) {
+                product.images.forEach((image, index) => {
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = image;
+                    thumbnail.className = 'thumbnail';
+                    thumbnail.addEventListener('click', () => { 
+                        showModalImage(index); 
+                        clearInterval(modalCarouselInterval); 
+                        startModalCarousel(); 
+                    });
+                    modalThumbnails.appendChild(thumbnail);
+                });
+                showModalImage(0);
+                startModalCarousel();
+            } else {
+                modalMainImage.src = 'https://via.placeholder.com/500x400?text=Sin+Imagen';
+            }
+            
+            productModal.style.display = 'block';
+        }
+
         function showModalImage(index) {
             if (!modalCurrentProduct || modalCurrentProduct.images.length === 0) return;
             const total = modalCurrentProduct.images.length;
             modalCurrentIndex = (index % total + total) % total;
             modalMainImage.src = modalCurrentProduct.images[modalCurrentIndex];
+            
             document.querySelectorAll('#modal-thumbnails .thumbnail').forEach((thumb, i) => {
                 thumb.classList.toggle('active', i === modalCurrentIndex);
             });
@@ -1601,7 +2522,9 @@
         function startModalCarousel() {
             clearInterval(modalCarouselInterval);
             if (modalCurrentProduct && modalCurrentProduct.images.length > 1) {
-                modalCarouselInterval = setInterval(() => { showModalImage(modalCurrentIndex + 1); }, 3000);
+                modalCarouselInterval = setInterval(() => { 
+                    showModalImage(modalCurrentIndex + 1); 
+                }, 3000);
             }
         }
         
@@ -1611,238 +2534,7 @@
             modalCurrentProduct = null;
         }
 
-        function openProductModal(product) {
-            modalCurrentProduct = product;
-            modalCurrentIndex = 0;
-            modalTitle.textContent = product.title;
-            modalPrice.textContent = `$${product.price.toFixed(2)}`;
-            modalDescription.textContent = product.description;
-            const whatsappMessage = encodeURIComponent(`Quisiera saber más sobre este producto: ${product.title}`);
-            modalWhatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
-            modalThumbnails.innerHTML = '';
-            const showNav = product.images.length > 1 ? 'block' : 'none';
-            prevModalBtn.style.display = showNav;
-            nextModalBtn.style.display = showNav;
-            if (product.images.length > 0) {
-                product.images.forEach((image, index) => {
-                    const thumbnail = document.createElement('img');
-                    thumbnail.src = image;
-                    thumbnail.className = 'thumbnail';
-                    thumbnail.addEventListener('click', () => { showModalImage(index); clearInterval(modalCarouselInterval); startModalCarousel(); });
-                    modalThumbnails.appendChild(thumbnail);
-                });
-                showModalImage(0);
-                startModalCarousel();
-            }
-            productModal.style.display = 'block';
-        }
-
-        function openLoginModal() {
-            productsSection.style.display = 'none';
-            productManagementSection.style.display = 'none';
-            searchBar.value = '';
-            loginMessage.innerHTML = '';
-            loginModal.style.display = 'block';
-        }
-
-        function closeLoginModal() {
-            loginModal.style.display = 'none';
-            showProductsSection();
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            const email = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            auth.signInWithEmailAndPassword(email, password)
-                .then(() => {
-                    isLoggedIn = true;
-                    updateNavigation();
-                    showMessage(loginMessage, 'Inicio de sesión exitoso', 'success');
-                    closeLoginModal();
-                })
-                .catch((error) => { showMessage(loginMessage, 'Error: ' + error.message, 'error'); });
-        }
-
-        function logout() {
-            auth.signOut().then(() => { isLoggedIn = false; updateNavigation(); showProductsSection(); });
-        }
-
-        function loadProducts() {
-            const productsRef = database.ref('products');
-            productsRef.on('value', (snapshot) => {
-                products = [];
-                const data = snapshot.val();
-                if (data) {
-                    Object.keys(data).forEach(key => { products.push({ id: key, ...data[key] }); });
-                }
-                renderProducts();
-            });
-        }
-
-        function handleProductSubmission(e) {
-            e.preventDefault();
-            const id = productIdInput.value;
-            const title = document.getElementById('product-title').value;
-            const description = document.getElementById('product-description').value;
-            const price = parseFloat(document.getElementById('product-price').value);
-            const existingImageUrls = tempProductImages.filter(url => url.startsWith('http'));
-            const newDataUrls = tempProductImages.filter(url => url.startsWith('data:'));
-            if (existingImageUrls.length + newDataUrls.length === 0) { showMessage(productMessage, 'Debe seleccionar al menos una imagen', 'error'); return; }
-            const uploadPromises = [];
-            for (let i = 0; i < newDataUrls.length; i++) {
-                const dataUrl = newDataUrls[i];
-                const storageRef = storage.ref('products/' + Date.now() + '_' + i + '.jpg');
-                uploadPromises.push((async () => {
-                    const response = await fetch(dataUrl);
-                    const fileBlob = await response.blob();
-                    const snapshot = await storageRef.put(fileBlob);
-                    return snapshot.ref.getDownloadURL();
-                })());
-            }
-            Promise.all(uploadPromises)
-                .then(newlyUploadedUrls => {
-                    let finalImageUrls = existingImageUrls.concat(newlyUploadedUrls);
-                    let deleteOldImagesPromises = [];
-                    if (id) {
-                        const imagesToKeep = new Set(existingImageUrls);
-                        const imagesToDelete = originalProductImages.filter(url => url.startsWith('http') && !imagesToKeep.has(url));
-                        imagesToDelete.forEach(url => {
-                            try { const storageRef = storage.refFromURL(url); deleteOldImagesPromises.push(storageRef.delete()); } catch (e) { deleteOldImagesPromises.push(Promise.resolve()); }
-                        });
-                        originalProductImages = [];
-                    }
-                    return Promise.all(deleteOldImagesPromises).then(() => finalImageUrls);
-                })
-                .then(finalImageUrls => {
-                    const newProduct = { title, description, price, images: finalImageUrls, date: new Date().toISOString() };
-                    if (id) { return database.ref('products/' + id).update(newProduct); } 
-                    else { return database.ref('products').push(newProduct); }
-                })
-                .then(() => { saveProductsAndShowSuccess('Producto guardado exitosamente'); })
-                .catch((error) => { showMessage(productMessage, 'Error: ' + error.message, 'error'); });
-        }
-
-        function saveProductsAndShowSuccess(message) {
-            showMessage(productMessage, message, 'success');
-            productForm.reset();
-            tempProductImages = [];
-            renderImageUploadPreview();
-            setTimeout(() => { showProductsSection(); }, 1500);
-        }
-
-        function handleDeleteProduct(id) {
-            if (confirm('¿Está seguro que desea eliminar este producto?')) {
-                const productRef = database.ref('products/' + id);
-                productRef.once('value')
-                    .then(snapshot => {
-                        const product = snapshot.val();
-                        if (!product || !product.images || product.images.length === 0) return productRef.remove();
-                        const deletePromises = [];
-                        product.images.forEach(url => {
-                            try { deletePromises.push(storage.refFromURL(url).delete()); } catch (e) { deletePromises.push(Promise.resolve()); }
-                        });
-                        return Promise.all(deletePromises).then(() => productRef.remove());
-                    })
-                    .then(() => { showMessage(productMessage, 'Producto eliminado', 'success'); })
-                    .catch((error) => { showMessage(productMessage, 'Error: ' + error.message, 'error'); });
-            }
-        }
-
-        function openAddProductForm() {
-            showProductManagementSection();
-            productForm.reset();
-            productIdInput.value = '';
-            productManagementTitle.textContent = 'Agregar Nuevo Producto';
-            submitProductBtn.textContent = 'Publicar Producto';
-            tempProductImages = [];
-            originalProductImages = [];
-            renderImageUploadPreview();
-            productManagementSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function openEditProductForm(product) {
-            showProductManagementSection();
-            productManagementTitle.textContent = 'Editar Producto';
-            submitProductBtn.textContent = 'Guardar Cambios';
-            productIdInput.value = product.id;
-            document.getElementById('product-title').value = product.title;
-            document.getElementById('product-description').value = product.description;
-            document.getElementById('product-price').value = product.price;
-            originalProductImages = [...product.images];
-            tempProductImages = [...product.images];
-            renderImageUploadPreview();
-            productManagementSection.scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function filterProducts() {
-            showProductsSection();
-            const searchTerm = searchBar.value.toLowerCase().trim();
-            if (searchTerm === '') { renderProducts(); return; }
-            const filtered = products.filter(product => {
-                return product.title.toLowerCase().includes(searchTerm) || product.description.toLowerCase().includes(searchTerm);
-            });
-            renderProducts(filtered);
-        }
-
-        function renderProducts(filteredProducts = products) {
-            productsGrid.innerHTML = '';
-            const displayProducts = searchBar.value.trim() !== '' ? filteredProducts : [...products].sort((a, b) => new Date(b.date) - new Date(a.date));
-            if (displayProducts.length === 0) { productsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-color); opacity: 0.7;">No se encontraron productos.</p>`; return; }
-            displayProducts.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    <img src="${product.images[0]}" alt="${product.title}" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">${product.title}</h3>
-                        <p class="product-description">${product.description}</p>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
-                    </div>
-                    ${isLoggedIn ? `
-                        <div class="admin-controls">
-                            <button class="btn-edit" data-id="${product.id}" title="Editar"><i class="fas fa-edit"></i></button>
-                            <button class="btn-delete" data-id="${product.id}" title="Eliminar"><i class="fas fa-trash"></i></button>
-                        </div>
-                    ` : ''}
-                `;
-                productCard.addEventListener('click', (event) => { if (!event.target.closest('.admin-controls')) openProductModal(product); });
-                productsGrid.appendChild(productCard);
-            });
-            if (isLoggedIn) {
-                document.querySelectorAll('.btn-edit').forEach(btn => {
-                    btn.addEventListener('click', (e) => { e.stopPropagation(); openEditProductForm(products.find(p => p.id === btn.getAttribute('data-id'))); });
-                });
-                document.querySelectorAll('.btn-delete').forEach(btn => {
-                    btn.addEventListener('click', (e) => { e.stopPropagation(); handleDeleteProduct(btn.getAttribute('data-id')); });
-                });
-            }
-        }
-        
-        function updateNavigation() {
-            if (isLoggedIn) {
-                loginDropdownLink.style.display = 'none';
-                addProductDropdownLink.style.display = 'block';
-                logoutDropdownLink.style.display = 'block';
-            } else {
-                loginDropdownLink.style.display = 'block';
-                addProductDropdownLink.style.display = 'none';
-                logoutDropdownLink.style.display = 'none';
-            }
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            document.body.classList.toggle('light-mode');
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            }
-        }
-
+        // Funciones para el carrusel principal
         function startCarousel() {
             carouselInterval = setInterval(() => {
                 currentCarouselIndex = (currentCarouselIndex + 1) % carouselItems.length;
@@ -1858,31 +2550,32 @@
             currentCarouselIndex = index;
         }
 
-        function showProductsSection() {
-            if (loginSection.parentElement !== loginModalContent) loginModalContent.appendChild(loginSection);
-            loginModal.style.display = 'none';
-            productModal.style.display = 'none';
-            productsSection.style.display = 'block';
-            productManagementSection.style.display = 'none';
-        }
-
-        function showProductManagementSection() {
-            if (isLoggedIn) {
-                if (loginSection.parentElement !== loginModalContent) loginModalContent.appendChild(loginSection);
-                loginModal.style.display = 'none';
-                productsSection.style.display = 'none';
-                productManagementSection.style.display = 'block';
-                searchBar.value = '';
-            } else { openLoginModal(); }
-        }
-
+        // Función para mostrar mensajes
         function showMessage(element, message, type) {
             element.innerHTML = `<div class="message ${type}">${message}</div>`;
-            setTimeout(() => { element.innerHTML = ''; }, 3000);
+            setTimeout(() => { 
+                element.innerHTML = ''; 
+            }, 3000);
         }
 
-        startCarousel();
-        checkAuthState();
+        // Función para cambiar tema
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', () => {
+            startCarousel();
+            checkAuthState();
+        });
     </script>
 </body>
 </html>
